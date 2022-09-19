@@ -1,4 +1,4 @@
 # External
 External libraries
 
-Used only to be refrenced in sub module
+Used only to be referenced in sub module
