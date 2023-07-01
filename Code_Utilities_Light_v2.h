@@ -257,6 +257,6 @@ namespace BdB
     inline int randInt(int min, int max) { return uniform_int_distribution<>{min, max}(getRand()); }
     inline int randInt(int max) { return randInt(0, max); }
 
-    inline double randDouble(double min, double max) { return uniform_real_distribution<>{min, max}(getRand()); }
-    inline double randDouble(double max) { return randDouble(0, max); }
+    inline float randFloat(float min, float max) { return uniform_real_distribution<>{min, max}(getRand()); }
+    inline float randFloat(float max) { return randFloat(0, max); }
 }
