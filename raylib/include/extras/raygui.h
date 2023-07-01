@@ -2349,7 +2349,7 @@ bool GuiTextBoxMulti(Rectangle bounds, char *text, int textSize, bool editMode)
             {
                 int glyphWidth = 0;
                 if (glyphInfo.advanceX != 0) glyphWidth += glyphInfo.advanceX;
-                else glyphWidth += (atlasRec.width + glyphInfo.offsetX);
+                else glyphWidth += ((int)atlasRec.width + (int)glyphInfo.offsetX);
 
                 // Jump line if the end of the text box area has been reached
                 if ((cursorPos.x + (glyphWidth*scaleFactor)) > (textAreaBounds.x + textAreaBounds.width))
@@ -2382,7 +2382,7 @@ bool GuiTextBoxMulti(Rectangle bounds, char *text, int textSize, bool editMode)
 
             int glyphWidth = 0;
             if (glyphInfo.advanceX != 0) glyphWidth += glyphInfo.advanceX;
-            else glyphWidth += (atlasRec.width + glyphInfo.offsetX);
+            else glyphWidth += ((int)atlasRec.width + (int)glyphInfo.offsetX);
 
             cursorPos.x += (glyphWidth*scaleFactor + (float)GuiGetStyle(DEFAULT, TEXT_SPACING));
             //if (i > lastSpacePos) lastSpaceWidth += (atlasRec.width + (float)GuiGetStyle(DEFAULT, TEXT_SPACING));
@@ -3056,11 +3056,11 @@ float GuiColorBarHue(Rectangle bounds, float hue)
     if (state != GUI_STATE_DISABLED)
     {
         // Draw hue bar:color bars
-        DrawRectangleGradientV((int)bounds.x, (int)(bounds.y), (int)bounds.width, ceil(bounds.height/6),  Fade(RAYGUI_CLITERAL(Color) { 255, 0, 0, 255 }, guiAlpha), Fade(RAYGUI_CLITERAL(Color) { 255, 255, 0, 255 }, guiAlpha));
-        DrawRectangleGradientV((int)bounds.x, (int)(bounds.y + bounds.height/6), (int)bounds.width, ceil(bounds.height/6), Fade(RAYGUI_CLITERAL(Color) { 255, 255, 0, 255 }, guiAlpha), Fade(RAYGUI_CLITERAL(Color) { 0, 255, 0, 255 }, guiAlpha));
-        DrawRectangleGradientV((int)bounds.x, (int)(bounds.y + 2*(bounds.height/6)), (int)bounds.width, ceil(bounds.height/6), Fade(RAYGUI_CLITERAL(Color) { 0, 255, 0, 255 }, guiAlpha), Fade(RAYGUI_CLITERAL(Color) { 0, 255, 255, 255 }, guiAlpha));
-        DrawRectangleGradientV((int)bounds.x, (int)(bounds.y + 3*(bounds.height/6)), (int)bounds.width, ceil(bounds.height/6), Fade(RAYGUI_CLITERAL(Color) { 0, 255, 255, 255 }, guiAlpha), Fade(RAYGUI_CLITERAL(Color) { 0, 0, 255, 255 }, guiAlpha));
-        DrawRectangleGradientV((int)bounds.x, (int)(bounds.y + 4*(bounds.height/6)), (int)bounds.width, ceil(bounds.height/6), Fade(RAYGUI_CLITERAL(Color) { 0, 0, 255, 255 }, guiAlpha), Fade(RAYGUI_CLITERAL(Color) { 255, 0, 255, 255 }, guiAlpha));
+        DrawRectangleGradientV((int)bounds.x, (int)(bounds.y), (int)bounds.width, (int)ceil(bounds.height/6),  Fade(RAYGUI_CLITERAL(Color) { 255, 0, 0, 255 }, guiAlpha), Fade(RAYGUI_CLITERAL(Color) { 255, 255, 0, 255 }, guiAlpha));
+        DrawRectangleGradientV((int)bounds.x, (int)(bounds.y + bounds.height/6), (int)bounds.width, (int)ceil(bounds.height/6), Fade(RAYGUI_CLITERAL(Color) { 255, 255, 0, 255 }, guiAlpha), Fade(RAYGUI_CLITERAL(Color) { 0, 255, 0, 255 }, guiAlpha));
+        DrawRectangleGradientV((int)bounds.x, (int)(bounds.y + 2*(bounds.height/6)), (int)bounds.width, (int)ceil(bounds.height/6), Fade(RAYGUI_CLITERAL(Color) { 0, 255, 0, 255 }, guiAlpha), Fade(RAYGUI_CLITERAL(Color) { 0, 255, 255, 255 }, guiAlpha));
+        DrawRectangleGradientV((int)bounds.x, (int)(bounds.y + 3*(bounds.height/6)), (int)bounds.width, (int)ceil(bounds.height/6), Fade(RAYGUI_CLITERAL(Color) { 0, 255, 255, 255 }, guiAlpha), Fade(RAYGUI_CLITERAL(Color) { 0, 0, 255, 255 }, guiAlpha));
+        DrawRectangleGradientV((int)bounds.x, (int)(bounds.y + 4*(bounds.height/6)), (int)bounds.width, (int)ceil(bounds.height/6), Fade(RAYGUI_CLITERAL(Color) { 0, 0, 255, 255 }, guiAlpha), Fade(RAYGUI_CLITERAL(Color) { 255, 0, 255, 255 }, guiAlpha));
         DrawRectangleGradientV((int)bounds.x, (int)(bounds.y + 5*(bounds.height/6)), (int)bounds.width, (int)(bounds.height/6), Fade(RAYGUI_CLITERAL(Color) { 255, 0, 255, 255 }, guiAlpha), Fade(RAYGUI_CLITERAL(Color) { 255, 0, 0, 255 }, guiAlpha));
     }
     else DrawRectangleGradientV((int)bounds.x, (int)bounds.y, (int)bounds.width, (int)bounds.height, Fade(Fade(GetColor(GuiGetStyle(COLORPICKER, BASE_COLOR_DISABLED)), 0.1f), guiAlpha), Fade(GetColor(GuiGetStyle(COLORPICKER, BORDER_COLOR_DISABLED)), guiAlpha));
