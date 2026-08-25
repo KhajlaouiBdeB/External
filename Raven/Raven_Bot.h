@@ -294,6 +294,7 @@ namespace Raven
         // bot->SetBrain(BehaviourTree::BuildRavenBotTree(bot));
         // Takes ownership: deletes any previously assigned brain first.
         void SetBrain(BehaviourTree::BehaviourTree* brain);
+        BehaviourTree::BehaviourTree* GetBrain() const { return m_pBrain; }
     };
 } // namespace Raven
 
