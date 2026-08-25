@@ -79,6 +79,7 @@ namespace Raven
         // this handles all the weapons. and has methods for aiming, selecting and
         // shooting them
         Raven_WeaponSystem* m_pWeaponSys;
+        bool m_autoFire;
 
         // A regulator object limits the update frequency of a specific AI component
         Regulator* m_pWeaponSelectionRegulator;

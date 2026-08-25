@@ -23,10 +23,9 @@
 namespace Raven
 {
     using namespace Common;
-    Raven_Bot::Raven_Bot(Raven_Scene* world, Vector2D pos)
-        :
 
-          MovingEntity(pos,
+    Raven_Bot::Raven_Bot(Raven_Scene* world, Vector2D pos)
+        : MovingEntity(pos,
                        RavenConfig.GetDouble("Bot_Scale"),
                        Vector2D(0, 0),
                        RavenConfig.GetDouble("Bot_MaxSpeed"),
@@ -36,19 +35,19 @@ namespace Raven
                        RavenConfig.GetDouble("Bot_MaxHeadTurnRate"),
                        RavenConfig.GetDouble("Bot_MaxForce")),
 
-          m_iMaxHealth(RavenConfig.GetInt("Bot_MaxHealth")),
-          m_iHealth(RavenConfig.GetInt("Bot_MaxHealth")),
-          m_pPathPlanner(NULL),
-          m_pSteering(NULL),
-          m_pWorld(world),
-          m_pBrain(NULL),
-          m_iNumUpdatesHitPersistant((int)(Game::FPS * RavenConfig.GetDouble("HitFlashTime"))),
-          m_bHit(false),
-          m_iScore(0),
-          m_Status(spawning),
-          m_bPossessed(false),
-          m_dFieldOfView(DegsToRads(RavenConfig.GetDouble("Bot_FOV")))
-
+        m_iMaxHealth(RavenConfig.GetInt("Bot_MaxHealth")),
+        m_iHealth(RavenConfig.GetInt("Bot_MaxHealth")),
+        m_pPathPlanner(NULL),
+        m_pSteering(NULL),
+        m_pWorld(world),
+        m_pBrain(NULL),
+        m_iNumUpdatesHitPersistant((int)(Game::FPS * RavenConfig.GetDouble("HitFlashTime"))),
+        m_bHit(false),
+        m_iScore(0),
+        m_Status(spawning),
+        m_bPossessed(false),
+        m_dFieldOfView(DegsToRads(RavenConfig.GetDouble("Bot_FOV"))),
+        m_autoFire(false)
     {
         SetEntityType(type_bot);
 
@@ -156,7 +155,10 @@ namespace Raven
 
             // this method aims the bot's current weapon at the current target
             // and takes a shot if a shot is possible
-            m_pWeaponSys->TakeAimAndShoot();
+            if (m_autoFire)
+            {
+                m_pWeaponSys->TakeAimAndShoot();
+            }
         }
 
         // Calculate the steering force and update the bot's velocity and position
@@ -203,6 +205,7 @@ namespace Raven
             m_vSide = m_vHeading.Perp();
         }
     }
+
     //---------------------------- isReadyForTriggerUpdate ------------------------
     //
     //  returns true if the bot is ready to be tested against the world triggers
@@ -256,20 +259,19 @@ namespace Raven
             return true;
 
         case Msg_UserHasRemovedBot:
-        {
-
-            Raven_Bot* pRemovedBot = (Raven_Bot*)msg.ExtraInfo;
-
-            GetSensoryMem()->RemoveBotFromMemory(pRemovedBot);
-
-            // if the removed bot is the target, make sure the target is cleared
-            if (pRemovedBot == GetTargetSys()->GetTarget())
             {
-                GetTargetSys()->ClearTarget();
-            }
+                Raven_Bot* pRemovedBot = (Raven_Bot*)msg.ExtraInfo;
 
-            return true;
-        }
+                GetSensoryMem()->RemoveBotFromMemory(pRemovedBot);
+
+                // if the removed bot is the target, make sure the target is cleared
+                if (pRemovedBot == GetTargetSys()->GetTarget())
+                {
+                    GetTargetSys()->ClearTarget();
+                }
+
+                return true;
+            }
 
         default:
             return false;
@@ -348,6 +350,7 @@ namespace Raven
             m_bPossessed = true;
         }
     }
+
     //------------------------------- Exorcise ------------------------------------
     //
     //  called when a human is exorcised from this bot and the AI takes control
@@ -529,10 +532,12 @@ namespace Raven
     {
         // setup the vertex buffers and calculate the bounding radius
         const int NumBotVerts = 4;
-        const Vector2D bot[NumBotVerts] = {Vector2D(-3, 8),
-                                           Vector2D(3, 10),
-                                           Vector2D(3, -10),
-                                           Vector2D(-3, -8)};
+        const Vector2D bot[NumBotVerts] = {
+            Vector2D(-3, 8),
+            Vector2D(3, 10),
+            Vector2D(3, -10),
+            Vector2D(-3, -8)
+        };
 
         m_dBoundingRadius = 0.0;
         double scale = RavenConfig.GetDouble("Bot_Scale");
