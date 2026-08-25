@@ -136,7 +136,9 @@ namespace Raven
             // let the behaviour tree pick this frame's steering target (chase
             // the current target if there is one, otherwise explore) based on
             // the target selection above
-            m_pBrain->tick();
+
+            if (!m_pBrain->isComplete())
+                m_pBrain->tick();
 
             // update the sensory memory with any visual stimulus
             if (m_pVisionUpdateRegulator->isReady())
