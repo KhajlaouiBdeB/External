@@ -85,6 +85,7 @@ namespace Raven
     Raven_Bot::~Raven_Bot()
     {
         delete m_pBrain;
+        m_pBrain = nullptr;
         delete m_pPathPlanner;
         delete m_pSteering;
         delete m_pWeaponSelectionRegulator;
