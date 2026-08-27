@@ -10,6 +10,7 @@
 namespace Raven
 {
     using namespace Common;
+    using namespace Graphics;
     Blaster::Blaster(Raven_Bot* owner)
         :
 

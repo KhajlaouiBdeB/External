@@ -14,8 +14,10 @@
 #include <limits>
 #include "misc/utils.h"
 
-namespace Common
+namespace Graphics
 {
+    using namespace Common;
+
     struct Vector2D
     {
         double x;
@@ -411,6 +413,6 @@ namespace Common
         return facingFirst.Dot(toTarget) >= cos(fov / 2.0);
     }
 
-} // namespace Common
+} // namespace Graphics
 
 #endif

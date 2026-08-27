@@ -11,6 +11,7 @@
 namespace Raven
 {
     using namespace Common;
+    using namespace Graphics;
     Trigger_SoundNotify::Trigger_SoundNotify(Raven_Bot* source,
                                              double range)
         : Trigger_LimitedLifetime<Raven_Bot>(Game::FPS / RavenConfig.GetInt("Bot_TriggerUpdateFreq")),

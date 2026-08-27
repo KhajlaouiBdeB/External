@@ -14,7 +14,7 @@
 #include <list>
 #include <vector>
 
-namespace Common
+namespace Graphics
 {
     class Wall2D;
 }
@@ -22,6 +22,7 @@ namespace Common
 namespace Raven
 {
     using namespace Common;
+    using namespace Graphics;
     class Raven_Bot;
     class Raven_Scene;
 

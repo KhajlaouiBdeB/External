@@ -17,6 +17,7 @@
 namespace Raven
 {
     using namespace Common;
+    using namespace Graphics;
     Slug::Slug(Raven_Bot* shooter, Vector2D target)
         :
 

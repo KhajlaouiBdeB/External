@@ -1,7 +1,7 @@
 #include "Vector2D.h"
 #include <fstream>
 
-namespace Common
+namespace Graphics
 {
     std::ostream& operator<<(std::ostream& os, const Vector2D& rhs)
     {
@@ -16,4 +16,4 @@ namespace Common
 
         return is;
     }
-} // namespace Common
+} // namespace Graphics

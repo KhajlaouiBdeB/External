@@ -18,6 +18,7 @@
 namespace Raven
 {
     using namespace Common;
+    using namespace Graphics;
     class GraveMarkers
     {
       private:

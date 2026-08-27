@@ -12,6 +12,7 @@
 namespace Raven
 {
     using namespace Common;
+    using namespace Graphics;
     ShotGun::ShotGun(Raven_Bot* owner)
         :
 

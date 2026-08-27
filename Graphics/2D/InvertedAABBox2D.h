@@ -13,7 +13,7 @@
 #include "2d/Vector2D.h"
 #include "Graphics/GraphicsContext.h"
 
-namespace Common
+namespace Graphics
 {
     class InvertedAABBox2D
     {
@@ -85,6 +85,6 @@ namespace Common
         }
     };
 
-} // namespace Common
+} // namespace Graphics
 
 #endif

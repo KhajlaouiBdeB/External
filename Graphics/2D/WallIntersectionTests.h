@@ -17,8 +17,10 @@
 //  the map objects and walls and test for any intersection. This method
 //  returns true if an intersection occurs.
 //-----------------------------------------------------------------------------
-namespace Common
+namespace Graphics
 {
+    using namespace Common;
+
     template <class ContWall>
     inline bool doWallsObstructLineSegment(Vector2D from,
                                            Vector2D to,
@@ -137,4 +139,4 @@ namespace Common
 
         return false;
     }
-} // namespace Common
+} // namespace Graphics

@@ -2,6 +2,7 @@
 
 namespace Common
 {
+    using namespace Graphics;
     int GameEntity::m_iNextValidID = 0;
 
     //------------------------------ ctor -----------------------------------------

@@ -17,6 +17,7 @@
 
 namespace Common
 {
+    using namespace Graphics;
     struct Telegram;
 
     class GameEntity

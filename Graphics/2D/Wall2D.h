@@ -15,7 +15,7 @@
 #include "2d/Vector2D.h"
 #include <fstream>
 
-namespace Common
+namespace Graphics
 {
     class Wall2D
     {
@@ -123,6 +123,6 @@ namespace Common
         }
     };
 
-} // namespace Common
+} // namespace Graphics
 
 #endif

@@ -11,6 +11,7 @@
 namespace Raven
 {
     using namespace Common;
+    using namespace Graphics;
     RailGun::RailGun(Raven_Bot* owner)
         :
 

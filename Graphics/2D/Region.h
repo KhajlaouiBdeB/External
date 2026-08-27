@@ -18,7 +18,7 @@
 #include "misc/utils.h"
 #include "misc/Stream_Utility_Functions.h"
 
-namespace Common
+namespace Graphics
 {
     class Region
     {
@@ -158,6 +158,6 @@ namespace Common
         }
     }
 
-} // namespace Common
+} // namespace Graphics
 
 #endif

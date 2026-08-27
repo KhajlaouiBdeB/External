@@ -7,6 +7,7 @@
 namespace Raven
 {
     using namespace Common;
+    using namespace Graphics;
     GraveMarkers::GraveMarkers(double lifetime)
         : m_dLifeTime(lifetime)
     {

@@ -11,6 +11,7 @@
 namespace Raven
 {
     using namespace Common;
+    using namespace Graphics;
     Raven_Door::Raven_Door(Raven_Map* pMap,
                            std::ifstream& is)
         :

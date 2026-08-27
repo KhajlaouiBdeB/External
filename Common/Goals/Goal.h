@@ -13,6 +13,7 @@
 
 namespace Common
 {
+    using namespace Graphics;
     struct Telegram;
 
     template <class entity_type>

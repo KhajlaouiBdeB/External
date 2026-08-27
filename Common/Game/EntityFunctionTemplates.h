@@ -17,6 +17,7 @@
 //------------------------------------------------------------------------
 namespace Common
 {
+    using namespace Graphics;
     template <class T, class conT>
     bool Overlapped(const T* ob, const conT& conOb, double MinDistBetweenObstacles = 40.0)
     {

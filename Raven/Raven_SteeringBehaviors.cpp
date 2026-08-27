@@ -13,6 +13,7 @@
 namespace Raven
 {
     using namespace Common;
+    using namespace Graphics;
     using std::string;
     using std::vector;
 

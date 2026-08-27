@@ -7,6 +7,7 @@
 namespace Raven
 {
     using namespace Common;
+    using namespace Graphics;
     Raven_TargetingSystem::Raven_TargetingSystem(Raven_Bot* owner)
         : m_pOwner(owner),
           m_pCurrentTarget(0)

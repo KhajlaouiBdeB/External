@@ -15,6 +15,7 @@
 namespace Raven
 {
     using namespace Common;
+    using namespace Graphics;
     Pellet::Pellet(Raven_Bot* shooter, Vector2D target)
         :
 

@@ -13,6 +13,7 @@
 
 namespace Common
 {
+    using namespace Graphics;
     template <class entity_type>
     class Goal_Composite : public Goal<entity_type>
     {

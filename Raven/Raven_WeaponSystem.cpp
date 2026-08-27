@@ -16,6 +16,7 @@
 namespace Raven
 {
     using namespace Common;
+    using namespace Graphics;
     Raven_WeaponSystem::Raven_WeaponSystem(Raven_Bot* owner,
                                            double ReactionTime,
                                            double AimAccuracy,

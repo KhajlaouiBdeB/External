@@ -15,6 +15,7 @@
 namespace Raven
 {
     using namespace Common;
+    using namespace Graphics;
     class PathEdge
     {
       private:

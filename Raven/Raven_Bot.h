@@ -32,6 +32,7 @@ namespace BehaviourTree
 namespace Raven
 {
     using namespace Common;
+    using namespace Graphics;
     class Raven_PathPlanner;
     class Raven_Steering;
     class Raven_Scene;

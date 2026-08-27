@@ -17,6 +17,7 @@
 namespace Raven
 {
     using namespace Common;
+    using namespace Graphics;
     Raven_PathPlanner::Raven_PathPlanner(Raven_Bot* owner)
         : m_pOwner(owner),
           m_NavGraph(m_pOwner->GetWorld()->GetMap()->GetNavGraph()),

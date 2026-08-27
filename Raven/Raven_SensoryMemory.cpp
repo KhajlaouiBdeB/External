@@ -9,6 +9,7 @@
 namespace Raven
 {
     using namespace Common;
+    using namespace Graphics;
     Raven_SensoryMemory::Raven_SensoryMemory(Raven_Bot* owner,
                                              double MemorySpan)
         : m_pOwner(owner),

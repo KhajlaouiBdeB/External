@@ -18,6 +18,7 @@
 namespace Raven
 {
     using namespace Common;
+    using namespace Graphics;
     class Trigger_WeaponGiver : public Trigger_Respawning<Raven_Bot>
     {
       private:

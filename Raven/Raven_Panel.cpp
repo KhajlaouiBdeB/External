@@ -9,6 +9,7 @@
 namespace Raven
 {
     using namespace Common;
+    using namespace Graphics;
 
     Raven_Panel::Raven_Panel(Raven_Scene& scene)
         : _scene(scene)

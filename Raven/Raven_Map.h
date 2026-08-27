@@ -28,6 +28,7 @@
 namespace Raven
 {
     using namespace Common;
+    using namespace Graphics;
     class Raven_Door;
 
     class Raven_Map

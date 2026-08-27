@@ -15,8 +15,8 @@
 
 namespace Common
 {
+    using namespace Graphics;
     struct Telegram;
-    struct Vector2D;
 
     template <class entity_type>
     class Trigger : public GameEntity

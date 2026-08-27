@@ -15,6 +15,7 @@
 
 namespace Common
 {
+    using namespace Graphics;
     class TriggerRegion
     {
       public:

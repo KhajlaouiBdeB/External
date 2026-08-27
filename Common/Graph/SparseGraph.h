@@ -22,6 +22,7 @@
 
 namespace Common
 {
+    using namespace Graphics;
     template <class node_type, class edge_type>
     class SparseGraph
     {

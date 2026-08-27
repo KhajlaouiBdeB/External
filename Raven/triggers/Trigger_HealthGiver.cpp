@@ -10,6 +10,7 @@
 namespace Raven
 {
     using namespace Common;
+    using namespace Graphics;
     Trigger_HealthGiver::Trigger_HealthGiver(std::ifstream& datafile)
         :
 

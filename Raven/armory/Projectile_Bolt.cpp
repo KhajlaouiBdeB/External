@@ -14,6 +14,7 @@
 namespace Raven
 {
     using namespace Common;
+    using namespace Graphics;
     Bolt::Bolt(Raven_Bot* shooter, Vector2D target)
         :
 

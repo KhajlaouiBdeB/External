@@ -16,6 +16,7 @@
 
 namespace Common
 {
+    using namespace Graphics;
     class GraphNode
     {
       protected:

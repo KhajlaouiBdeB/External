@@ -15,7 +15,7 @@
 #include "misc/utils.h"
 #include "2d/Vector2D.h"
 
-namespace Common
+namespace Graphics
 {
     class C2DMatrix
     {
@@ -269,6 +269,6 @@ namespace Common
         MatrixMultiply(mat);
     }
 
-} // namespace Common
+} // namespace Graphics
 
 #endif

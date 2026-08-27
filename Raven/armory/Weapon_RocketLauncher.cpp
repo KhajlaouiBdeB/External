@@ -11,6 +11,7 @@
 namespace Raven
 {
     using namespace Common;
+    using namespace Graphics;
     RocketLauncher::RocketLauncher(Raven_Bot* owner)
         :
 

@@ -12,6 +12,7 @@
 namespace Raven
 {
     using namespace Common;
+    using namespace Graphics;
     Trigger_WeaponGiver::Trigger_WeaponGiver(std::ifstream& datafile)
         :
 

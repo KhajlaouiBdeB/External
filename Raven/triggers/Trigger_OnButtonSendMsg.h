@@ -16,6 +16,7 @@
 namespace Raven
 {
     using namespace Common;
+    using namespace Graphics;
     template <class entity_type>
     class Trigger_OnButtonSendMsg : public Trigger<entity_type>
     {

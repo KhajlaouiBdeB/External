@@ -28,6 +28,7 @@
 namespace Raven
 {
     using namespace Common;
+    using namespace Graphics;
     Raven_Scene::Raven_Scene()
         : m_pSelectedBot(NULL), m_bPaused(false), m_bRemoveABot(false), m_pMap(NULL), m_pPathManager(NULL), m_pGraveMarkers(NULL)
     {

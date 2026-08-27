@@ -16,6 +16,7 @@
 namespace Raven
 {
     using namespace Common;
+    using namespace Graphics;
     template <class path_planner>
     class PathManager
     {

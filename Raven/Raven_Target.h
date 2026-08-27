@@ -13,6 +13,7 @@
 namespace Raven
 {
     using namespace Common;
+    using namespace Graphics;
     struct Raven_Target
     {
         // the current target (this will be null if there is no target assigned)

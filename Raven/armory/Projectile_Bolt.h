@@ -15,6 +15,7 @@
 namespace Raven
 {
     using namespace Common;
+    using namespace Graphics;
     class Raven_Bot;
 
     class Bolt : public Raven_Projectile

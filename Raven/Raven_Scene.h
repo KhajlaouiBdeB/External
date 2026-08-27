@@ -24,6 +24,7 @@
 namespace Raven
 {
     using namespace Common;
+    using namespace Graphics;
     class Raven_Projectile;
     class Raven_Map;
     class GraveMarkers;

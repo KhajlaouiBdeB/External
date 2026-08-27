@@ -9,7 +9,7 @@
 //
 //------------------------------------------------------------------------
 
-namespace Common
+namespace Graphics
 {
     struct Rect2D
     {
@@ -21,6 +21,6 @@ namespace Common
             : x(x), y(y), w(w), h(h) {}
     };
 
-} // namespace Common
+} // namespace Graphics
 
 #endif

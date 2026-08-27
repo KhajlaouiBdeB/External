@@ -16,7 +16,7 @@
 #include <iosfwd>
 #include <vector>
 
-namespace Common
+namespace Graphics
 {
     class Wall2D;
 }
@@ -24,6 +24,7 @@ namespace Common
 namespace Raven
 {
     using namespace Common;
+    using namespace Graphics;
     class Raven_Map;
 
     class Raven_Door : public GameEntity

@@ -32,6 +32,7 @@
 //------------------------------------------------------------------------
 namespace Common
 {
+    using namespace Graphics;
     template <class entity>
     struct Cell
     {

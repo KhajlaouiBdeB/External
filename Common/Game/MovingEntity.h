@@ -18,6 +18,7 @@
 
 namespace Common
 {
+    using namespace Graphics;
     class MovingEntity : public GameEntity
     {
       protected:

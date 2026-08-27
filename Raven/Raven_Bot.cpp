@@ -23,6 +23,7 @@
 namespace Raven
 {
     using namespace Common;
+    using namespace Graphics;
 
     Raven_Bot::Raven_Bot(Raven_Scene* world, Vector2D pos)
         : MovingEntity(pos,

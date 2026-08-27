@@ -29,6 +29,7 @@
 namespace Raven
 {
     using namespace Common;
+    using namespace Graphics;
     enum
     {
         target_found,

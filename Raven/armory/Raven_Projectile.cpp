@@ -7,6 +7,7 @@
 namespace Raven
 {
     using namespace Common;
+    using namespace Graphics;
     Raven_Bot* Raven_Projectile::GetClosestIntersectingBot(Vector2D From,
                                                            Vector2D To) const
     {

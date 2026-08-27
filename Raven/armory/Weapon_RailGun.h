@@ -14,6 +14,7 @@
 namespace Raven
 {
     using namespace Common;
+    using namespace Graphics;
     class Raven_Bot;
 
     class RailGun : public Raven_Weapon

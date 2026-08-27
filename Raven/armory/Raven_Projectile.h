@@ -20,6 +20,7 @@
 namespace Raven
 {
     using namespace Common;
+    using namespace Graphics;
     class Raven_Scene;
     class Raven_Bot;
 

@@ -21,7 +21,7 @@
 //  given a std::vector of 2D vectors, a position, orientation and scale,
 //  this function transforms the 2D vectors into the object's world space
 //------------------------------------------------------------------------
-namespace Common
+namespace Graphics
 {
     inline std::vector<Vector2D> WorldTransform(std::vector<Vector2D>& points,
                                                 const Vector2D& pos,
@@ -239,6 +239,6 @@ namespace Common
         return whiskers;
     }
 
-} // namespace Common
+} // namespace Graphics
 
 #endif

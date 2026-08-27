@@ -19,8 +19,10 @@
 
 // given a plane and a ray this function determins how far along the ray
 // an interestion occurs. Returns negative if the ray is parallel
-namespace Common
+namespace Graphics
 {
+    using namespace Common;
+
     inline double DistanceToRayPlaneIntersection(Vector2D RayOrigin,
                                                  Vector2D RayHeading,
                                                  Vector2D PlanePoint, // any point on the plane
@@ -621,6 +623,6 @@ namespace Common
         return ipFound;
     }
 
-} // namespace Common
+} // namespace Graphics
 
 #endif
