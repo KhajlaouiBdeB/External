@@ -360,6 +360,11 @@ namespace Raven
     {
         m_bPossessed = false;
 
+        // Player-driven movement leaves Seek on with whatever target was
+        // last set; without turning it off here the bot would keep
+        // steering toward that stale point once AI control resumes.
+        m_pSteering->SeekOff();
+
         // TODO: implement a reset of the behaviour tree when the bot is exorcised
         // m_pBrain->reset();
     }

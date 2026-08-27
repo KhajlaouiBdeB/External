@@ -424,6 +424,25 @@ namespace Raven
         if (m_pSelectedBot && m_pSelectedBot->isPossessed())
         {
             m_pSelectedBot->RotateFacingTowardPosition(Vector2D(GetMousePosition().x, GetMousePosition().y));
+
+            // WASD only - the arrow keys are already bound to AddBots()/
+            // RemoveBot() in GameRaven::handleInput().
+            Vector2D direction;
+            if (IsKeyDown('A')) direction.x -= 1;
+            if (IsKeyDown('D')) direction.x += 1;
+            if (IsKeyDown('W')) direction.y -= 1;
+            if (IsKeyDown('S')) direction.y += 1;
+
+            if (direction.isZero())
+            {
+                m_pSelectedBot->GetSteering()->SeekOff();
+            }
+            else
+            {
+                direction.Normalize();
+                m_pSelectedBot->GetSteering()->SeekOn();
+                m_pSelectedBot->GetSteering()->SetTarget(m_pSelectedBot->Pos() + direction);
+            }
         }
     }
 

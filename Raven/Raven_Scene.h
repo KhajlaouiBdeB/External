@@ -137,6 +137,14 @@ namespace Raven
             return m_pSelectedBot;
         }
 
+        // Selects a bot without going through the click-to-select flow -
+        // used by callers (e.g. PlayerBot) that possess a dedicated bot
+        // programmatically instead of via ClickRightMouseButton().
+        void SelectBot(Raven_Bot* bot)
+        {
+            m_pSelectedBot = bot;
+        }
+
         void ChangeWeaponOfPossessedBot(unsigned int weapon) const;
 
         const Raven_Map* const GetMap() const
