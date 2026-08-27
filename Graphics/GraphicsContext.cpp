@@ -5,8 +5,10 @@
 #include "raylib.h"
 #include "raygui.h"
 
-namespace Common
+namespace Graphics
 {
+    using namespace Common;
+
     static GraphicsContext g_instance;
 
     GraphicsContext& GraphicsContext::Instance()
@@ -508,4 +510,4 @@ namespace Common
             return;
         } // end switch
     }
-} // namespace Common
+} // namespace Graphics

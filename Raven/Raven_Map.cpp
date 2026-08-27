@@ -21,6 +21,7 @@
 namespace Raven
 {
     using namespace Common;
+    using namespace Graphics;
     Raven_Map::Raven_Map(Raven_Scene& scene)
         : _scene(scene), m_pNavGraph(NULL), m_pSpacePartition(NULL), m_iSizeY(0), m_iSizeX(0), m_dCellSpaceNeighborhoodRange(0)
     {

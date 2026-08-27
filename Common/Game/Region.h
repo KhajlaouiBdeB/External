@@ -153,7 +153,7 @@ namespace Common
 
         if (ShowID)
         {
-            gfx.TextColor(GraphicsContext::green);
+            gfx.TextColor(Graphics::GraphicsContext::green);
             gfx.TextAtPos(Center(), ttos(ID()));
         }
     }

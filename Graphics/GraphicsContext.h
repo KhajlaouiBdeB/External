@@ -22,8 +22,10 @@
 #include "2D/Rect2D.h"
 
 //------------------------------- define some colors
-namespace Common
+namespace Graphics
 {
+    using namespace Common;
+
     struct GfxColor
     {
         unsigned char r = 0, g = 0, b = 0, a = 255;
@@ -56,7 +58,7 @@ namespace Common
     const GfxColor GfxBlank{0, 0, 0, 0};
 
     // make life easier on the fingers
-#define gfx Common::GraphicsContext::Instance()
+#define gfx Graphics::GraphicsContext::Instance()
 
     class GraphicsContext
     {
@@ -242,6 +244,6 @@ namespace Common
         void SetPenColor(int color);
     };
 
-} // namespace Common
+} // namespace Graphics
 
 #endif
