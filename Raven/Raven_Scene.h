@@ -130,7 +130,7 @@ namespace Raven
 
         // if a bot is possessed the keyboard is polled for user input and any
         // relevant bot methods are called appropriately
-        void GetPlayerInput() const;
+        void HandlePlayerInput() const;
 
         Raven_Bot* PossessedBot() const
         {

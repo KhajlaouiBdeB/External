@@ -88,7 +88,7 @@ namespace Raven
         m_pGraveMarkers->Update();
 
         // get any player keyboard input
-        GetPlayerInput();
+        HandlePlayerInput();
 
         // update all the queued searches in the path manager
         m_pPathManager->UpdateSearches();
@@ -419,12 +419,10 @@ namespace Raven
     //  if a bot is possessed the keyboard is polled for user input and any
     //  relevant bot methods are called appropriately
     //-----------------------------------------------------------------------------
-    void Raven_Scene::GetPlayerInput() const
+    void Raven_Scene::HandlePlayerInput() const
     {
         if (m_pSelectedBot && m_pSelectedBot->isPossessed())
         {
-            m_pSelectedBot->RotateFacingTowardPosition(Vector2D(GetMousePosition().x, GetMousePosition().y));
-
             // WASD only - the arrow keys are already bound to AddBots()/
             // RemoveBot() in GameRaven::handleInput().
             Vector2D direction;
@@ -443,6 +441,7 @@ namespace Raven
                 m_pSelectedBot->GetSteering()->SeekOn();
                 m_pSelectedBot->GetSteering()->SetTarget(m_pSelectedBot->Pos() + direction);
             }
+            m_pSelectedBot->RotateFacingTowardPosition(m_pSelectedBot->Pos() + m_pSelectedBot->Heading());
         }
     }
 
