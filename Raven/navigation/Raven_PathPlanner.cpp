@@ -21,7 +21,9 @@ namespace Raven
     Raven_PathPlanner::Raven_PathPlanner(Raven_Bot* owner)
         : m_pOwner(owner),
           m_NavGraph(m_pOwner->GetWorld()->GetMap()->GetNavGraph()),
-          m_pCurrentSearch(NULL)
+          m_pCurrentSearch(NULL),
+          m_bPathReady(false),
+          m_bSearchFailed(false)
     {
     }
 
@@ -45,6 +47,9 @@ namespace Raven
         // clean up memory used by any existing search
         delete m_pCurrentSearch;
         m_pCurrentSearch = 0;
+
+        m_bPathReady = false;
+        m_bSearchFailed = false;
     }
 
     //---------------------------- GetCostToNode ----------------------------------
@@ -122,6 +127,10 @@ namespace Raven
     {
         assert(m_pCurrentSearch &&
                "<Raven_PathPlanner::GetPathAsNodes>: no current search");
+
+        // consumed - a caller polling IsPathReady() shouldn't re-extract the
+        // same completed search again next tick
+        m_bPathReady = false;
 
         Path path = m_pCurrentSearch->GetPathAsPathEdges();
 
@@ -247,6 +256,8 @@ namespace Raven
         // let the bot know of the failure to find a path
         if (result == target_not_found)
         {
+            m_bSearchFailed = true;
+
             Dispatcher->DispatchMsg(SEND_MSG_IMMEDIATELY,
                                     SENDER_ID_IRRELEVANT,
                                     m_pOwner->ID(),
@@ -257,6 +268,8 @@ namespace Raven
         // let the bot know a path has been found
         else if (result == target_found)
         {
+            m_bPathReady = true;
+
             // if the search was for an item type then the final node in the path will
             // represent a giver trigger. Consequently, it's worth passing the pointer
             // to the trigger in the extra info field of the message. (The pointer

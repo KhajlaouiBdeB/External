@@ -50,6 +50,14 @@ namespace Raven
         // this is the position the bot wishes to plan a path to reach
         Vector2D m_vDestinationPos;
 
+        // polling-based alternative to the Msg_PathReady/Msg_NoPathAvailable
+        // messages CycleOnce() also fires: set once the current search
+        // resolves, so a caller (e.g. a behaviour tree leaf) can just ask
+        // IsPathReady()/HasFailed() each tick instead of handling messages.
+        // mutable because CycleOnce(), which sets them, is const.
+        mutable bool m_bPathReady;
+        mutable bool m_bSearchFailed;
+
         // returns the index of the closest visible and unobstructed graph node to
         // the given position
         int GetClosestNodeToPosition(Vector2D pos) const;
@@ -100,6 +108,20 @@ namespace Raven
         // the method messages the owner with either the msg_NoPathAvailable or
         // msg_PathReady messages
         int CycleOnce() const;
+
+        // true once the current search has completed successfully and GetPath()
+        // hasn't been called yet (GetPath() clears it back to false)
+        bool IsPathReady() const
+        {
+            return m_bPathReady;
+        }
+
+        // true once the current search has determined no path exists. Stays
+        // true until the next RequestPathTo... call
+        bool HasFailed() const
+        {
+            return m_bSearchFailed;
+        }
 
         Vector2D GetDestination() const
         {
