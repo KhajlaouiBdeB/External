@@ -64,6 +64,10 @@
 *.idb
 *.pdb
 
+# Raven's own map format also uses the .map extension (level data, unrelated
+# to linker output above) - don't ignore those.
+!Raven/**/*.map
+
 ### Windows
 # Windows thumbnail cache files
 Thumbs.db
