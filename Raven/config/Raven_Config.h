@@ -39,6 +39,11 @@ namespace Raven
         double GetDouble(const char* VariableName);
         std::string GetString(const char* VariableName);
         bool GetBool(const char* VariableName);
+
+        // lets a client (e.g. Source/Game) override or add a parameter instead
+        // of it being hardcoded in this library
+        void SetString(const char* VariableName, const std::string& Value);
+        void SetNumber(const char* VariableName, double Value);
     };
 
 } // namespace Raven
