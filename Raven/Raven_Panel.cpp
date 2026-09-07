@@ -74,6 +74,9 @@ namespace Raven
             gfx.GuiCheckBox({x, y, 16, 16}, "Show sensed opponents",
                             &RavenUserOpt.m_bShowOpponentsSensedBySelectedBot);
             y += 20;
+            gfx.GuiCheckBox({x, y, 16, 16}, "Show FOV of selected bot",
+                            &RavenUserOpt.m_bShowFOVOfSelectedBot);
+            y += 20;
             gfx.GuiCheckBox({x, y, 16, 16}, "Only show bots in target FOV",
                             &RavenUserOpt.m_bOnlyShowBotsInTargetsFOV);
             y += 20;

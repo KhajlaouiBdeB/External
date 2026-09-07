@@ -16,6 +16,7 @@
 
 #include "raylib.h"
 #include "navigation/Raven_PathPlanner.h"
+#include "2D/Transformations.h"
 
 #include "armory/Projectile_Bolt.h"
 #include "armory/Projectile_Pellet.h"
@@ -695,6 +696,35 @@ namespace Raven
             if (RavenUserOpt.m_bShowOpponentsSensedBySelectedBot)
             {
                 m_pSelectedBot->GetSensoryMem()->RenderBoxesAroundRecentlySensed();
+            }
+
+            if (RavenUserOpt.m_bShowFOVOfSelectedBot)
+            {
+                constexpr double kFOVRayLength = 150.0;
+                // extra rays fanned out between the two edges so the FOV
+                // reads as a cone rather than just two boundary lines, plus
+                // a polyline connecting their tips to approximate the arc
+                constexpr int kNumRays = 6;
+                const double halfFOV = m_pSelectedBot->FieldOfView() * 0.5;
+
+                gfx.RedPen();
+
+                std::vector<Vector2D> arcTips;
+                arcTips.reserve(kNumRays + 1);
+
+                for (int i = 0; i <= kNumRays; ++i)
+                {
+                    const double angle = -halfFOV + (2.0 * halfFOV) * (static_cast<double>(i) / kNumRays);
+
+                    Vector2D ray = m_pSelectedBot->Facing() * kFOVRayLength;
+                    Vec2DRotateAroundOrigin(ray, angle);
+
+                    const Vector2D rayTip = m_pSelectedBot->Pos() + ray;
+                    gfx.Line(m_pSelectedBot->Pos(), rayTip);
+                    arcTips.push_back(rayTip);
+                }
+
+                gfx.PolyLine(arcTips);
             }
 
             // render a square around the bot's target

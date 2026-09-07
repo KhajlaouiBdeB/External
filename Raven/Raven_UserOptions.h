@@ -33,6 +33,8 @@ namespace Raven
 
         bool m_bShowOpponentsSensedBySelectedBot;
 
+        bool m_bShowFOVOfSelectedBot;
+
         bool m_bOnlyShowBotsInTargetsFOV;
 
         bool m_bShowWeaponAppraisals;
