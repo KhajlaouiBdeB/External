@@ -361,6 +361,7 @@ namespace Raven
         m_bPossessed = false;
 
         m_pSteering->SeekOff();
+        m_pBrain->Reset();
     }
 
     //----------------------- ChangeWeapon ----------------------------------------
