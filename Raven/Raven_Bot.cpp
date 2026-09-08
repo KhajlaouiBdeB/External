@@ -177,8 +177,9 @@ namespace Raven
         Vector2D force = m_pSteering->Calculate();
 
         // if no steering force is produced decelerate the player by applying a
-        // braking force
-        if (m_pSteering->Force().isZero())
+        const bool noDeliberateForce = m_pSteering->Force().isZero()
+                                        || (isPossessed() && !m_pSteering->isSeekOn());
+        if (noDeliberateForce)
         {
             const double BrakingRate = 0.8;
 
@@ -349,6 +350,9 @@ namespace Raven
         if (!(isSpawning() || isDead()))
         {
             m_bPossessed = true;
+
+            m_pSteering->SeekOff();
+            m_pSteering->ArriveOff();
         }
     }
 

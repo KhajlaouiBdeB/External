@@ -205,6 +205,11 @@ namespace Raven
             return m_vSteeringForce;
         }
 
+        bool isSeekOn()
+        {
+            return On(seek);
+        }
+
         void SetSummingMethod(summing_method sm)
         {
             m_SummingMethod = sm;
