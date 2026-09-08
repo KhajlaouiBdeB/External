@@ -1,4 +1,6 @@
 #include "Weapon_ShotGun.h"
+
+#include "Raven_ObjectEnumerations.h"
 #include "../Raven_Bot.h"
 #include "../Raven_Map.h"
 #include "../Raven_Scene.h"
@@ -14,18 +16,17 @@ namespace Raven
     using namespace Common;
     using namespace Graphics;
     ShotGun::ShotGun(Raven_Bot* owner)
-        :
-
-          Raven_Weapon(type_shotgun,
+        : Raven_Weapon(type_shotgun,
                        RavenConfig.GetInt("ShotGun_DefaultRounds"),
                        RavenConfig.GetInt("ShotGun_MaxRoundsCarried"),
                        RavenConfig.GetDouble("ShotGun_FiringFreq"),
                        RavenConfig.GetDouble("ShotGun_IdealRange"),
                        RavenConfig.GetDouble("Pellet_MaxSpeed"),
-                       owner),
+                       owner)
+        ,
 
-          m_iNumBallsInShell(RavenConfig.GetInt("ShotGun_NumBallsInShell")),
-          m_dSpread(RavenConfig.GetDouble("ShotGun_Spread"))
+        m_iNumBallsInShell(RavenConfig.GetInt("ShotGun_NumBallsInShell"))
+        , m_dSpread(RavenConfig.GetDouble("ShotGun_Spread"))
     {
 
         // setup the vertex buffer

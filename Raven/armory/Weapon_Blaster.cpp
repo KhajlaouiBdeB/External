@@ -1,6 +1,7 @@
 #include "Weapon_Blaster.h"
 #include "../Raven_Bot.h"
 #include "../Raven_Map.h"
+#include "../Raven_ObjectEnumerations.h"
 #include "../Raven_Scene.h"
 #include "../config/Raven_Config.h"
 #include "Graphics/GraphicsContext.h"

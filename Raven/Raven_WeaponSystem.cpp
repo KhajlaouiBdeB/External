@@ -1,6 +1,7 @@
 #include "Raven_WeaponSystem.h"
 #include "2D/transformations.h"
 #include "Raven_Bot.h"
+#include "Raven_ObjectEnumerations.h"
 #include "Raven_Scene.h"
 #include "armory/Weapon_Blaster.h"
 #include "armory/Weapon_RailGun.h"

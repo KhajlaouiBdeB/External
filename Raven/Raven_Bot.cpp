@@ -1,6 +1,7 @@
 #include "Raven_Bot.h"
 #include "GameConfig.h"
 #include "2D/Transformations.h"
+#include "Raven_ObjectEnumerations.h"
 #include "Raven_Scene.h"
 #include "Raven_SensoryMemory.h"
 #include "Raven_SteeringBehaviors.h"
@@ -34,21 +35,20 @@ namespace Raven
                        RavenConfig.GetDouble("Bot_Mass"),
                        Vector2D(RavenConfig.GetDouble("Bot_Scale"), RavenConfig.GetDouble("Bot_Scale")),
                        RavenConfig.GetDouble("Bot_MaxHeadTurnRate"),
-                       RavenConfig.GetDouble("Bot_MaxForce")),
-
-        m_iMaxHealth(RavenConfig.GetInt("Bot_MaxHealth")),
-        m_iHealth(RavenConfig.GetInt("Bot_MaxHealth")),
-        m_pPathPlanner(NULL),
-        m_pSteering(NULL),
-        m_pWorld(world),
-        m_pBrain(NULL),
-        m_iNumUpdatesHitPersistant((int)(Game::FPS * RavenConfig.GetDouble("HitFlashTime"))),
-        m_bHit(false),
-        m_iScore(0),
-        m_Status(spawning),
-        m_bPossessed(false),
-        m_dFieldOfView(DegsToRads(RavenConfig.GetDouble("Bot_FOV"))),
-        m_autoFire(false)
+                       RavenConfig.GetDouble("Bot_MaxForce"))
+        , m_iMaxHealth(RavenConfig.GetInt("Bot_MaxHealth"))
+        , m_iHealth(RavenConfig.GetInt("Bot_MaxHealth"))
+        , m_pPathPlanner(NULL)
+        , m_pSteering(NULL)
+        , m_pWorld(world)
+        , m_pBrain(NULL)
+        , m_iNumUpdatesHitPersistant((int)(Game::FPS * RavenConfig.GetDouble("HitFlashTime")))
+        , m_bHit(false)
+        , m_iScore(0)
+        , m_Status(spawning)
+        , m_bPossessed(false)
+        , m_dFieldOfView(DegsToRads(RavenConfig.GetDouble("Bot_FOV")))
+        , m_autoFire(false)
     {
         SetEntityType(type_bot);
 
@@ -360,13 +360,7 @@ namespace Raven
     {
         m_bPossessed = false;
 
-        // Player-driven movement leaves Seek on with whatever target was
-        // last set; without turning it off here the bot would keep
-        // steering toward that stale point once AI control resumes.
         m_pSteering->SeekOff();
-
-        // TODO: implement a reset of the behaviour tree when the bot is exorcised
-        // m_pBrain->reset();
     }
 
     //----------------------- ChangeWeapon ----------------------------------------
@@ -542,8 +536,7 @@ namespace Raven
             Vector2D(-3, 8),
             Vector2D(3, 10),
             Vector2D(3, -10),
-            Vector2D(-3, -8)
-        };
+            Vector2D(-3, -8)};
 
         m_dBoundingRadius = 0.0;
         double scale = RavenConfig.GetDouble("Bot_Scale");

@@ -1,4 +1,6 @@
 #include "Weapon_RocketLauncher.h"
+
+#include "Raven_ObjectEnumerations.h"
 #include "../Raven_Bot.h"
 #include "../Raven_Map.h"
 #include "../Raven_Scene.h"
@@ -13,9 +15,7 @@ namespace Raven
     using namespace Common;
     using namespace Graphics;
     RocketLauncher::RocketLauncher(Raven_Bot* owner)
-        :
-
-          Raven_Weapon(type_rocket_launcher,
+        : Raven_Weapon(type_rocket_launcher,
                        RavenConfig.GetInt("RocketLauncher_DefaultRounds"),
                        RavenConfig.GetInt("RocketLauncher_MaxRoundsCarried"),
                        RavenConfig.GetDouble("RocketLauncher_FiringFreq"),

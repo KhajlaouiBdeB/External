@@ -10,14 +10,10 @@
 //  Desc:
 //-----------------------------------------------------------------------------
 #include <iosfwd>
-#include <map>
-#include <memory>
 #include <vector>
 
-#include "Raven_ObjectEnumerations.h"
 #include "Raven_TargetingSystem.h"
 #include "game/MovingEntity.h"
-#include "misc/utils.h"
 
 namespace Common
 {
@@ -43,7 +39,7 @@ namespace Raven
 
     class Raven_Bot : public MovingEntity
     {
-      private:
+    private:
         enum Status
         {
             alive,
@@ -51,7 +47,7 @@ namespace Raven
             spawning
         };
 
-      private:
+    private:
         // alive, dead or spawning?
         Status m_Status;
 
@@ -131,7 +127,7 @@ namespace Raven
         // initializes the bot's VB with its geometry
         void SetUpVertexBuffer();
 
-      public:
+    public:
         Raven_Bot(Raven_Scene* world, Vector2D pos);
         virtual ~Raven_Bot();
 
@@ -296,7 +292,10 @@ namespace Raven
         // bot->SetBrain(BehaviourTree::BuildRavenBotTree(bot));
         // Takes ownership: deletes any previously assigned brain first.
         void SetBrain(BehaviourTree::BehaviourTree* brain);
-        BehaviourTree::BehaviourTree* GetBrain() const { return m_pBrain; }
+        BehaviourTree::BehaviourTree* GetBrain() const
+        {
+            return m_pBrain;
+        }
     };
 } // namespace Raven
 

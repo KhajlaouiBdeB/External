@@ -1,4 +1,6 @@
 #include "Weapon_RailGun.h"
+
+#include "Raven_ObjectEnumerations.h"
 #include "../Raven_Bot.h"
 #include "../Raven_Map.h"
 #include "../Raven_Scene.h"
@@ -13,9 +15,7 @@ namespace Raven
     using namespace Common;
     using namespace Graphics;
     RailGun::RailGun(Raven_Bot* owner)
-        :
-
-          Raven_Weapon(type_rail_gun,
+        : Raven_Weapon(type_rail_gun,
                        RavenConfig.GetInt("RailGun_DefaultRounds"),
                        RavenConfig.GetInt("RailGun_MaxRoundsCarried"),
                        RavenConfig.GetDouble("RailGun_FiringFreq"),
