@@ -136,15 +136,20 @@ namespace Raven
 
         int closest = GetClosestNodeToPosition(m_pOwner->Pos());
 
-        path.push_front(PathEdge(m_pOwner->Pos(),
-                                 GetNodePosition(closest),
-                                 NavGraphEdge::normal));
+        if (closest != no_closest_node_found)
+        {
+            path.push_front(PathEdge(m_pOwner->Pos(),
+                                     GetNodePosition(closest),
+                                     NavGraphEdge::normal));
+        }
 
         // if the bot requested a path to a location then an edge leading to the
         // destination must be added
         if (m_pCurrentSearch->GetType() == Graph_SearchTimeSliced<EdgeType>::AStar)
         {
-            path.push_back(PathEdge(path.back().Destination(),
+            const Vector2D lastKnownPos = path.empty() ? m_pOwner->Pos() : path.back().Destination();
+
+            path.push_back(PathEdge(lastKnownPos,
                                     m_vDestinationPos,
                                     NavGraphEdge::normal));
         }
