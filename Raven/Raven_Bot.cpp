@@ -362,6 +362,7 @@ namespace Raven
 
         m_pSteering->SeekOff();
         m_pBrain->Reset();
+        SetMaxSpeed(RavenConfig.GetDouble("Bot_MaxSpeed"));
     }
 
     //----------------------- ChangeWeapon ----------------------------------------
