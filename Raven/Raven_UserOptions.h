@@ -47,6 +47,8 @@ namespace Raven
         bool m_bShowBotHealth;
 
         bool m_bShowScore;
+
+        bool m_bShowCurrentWeapon;
     };
 
 } // namespace Raven

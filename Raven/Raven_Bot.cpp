@@ -7,6 +7,7 @@
 #include "Raven_SteeringBehaviors.h"
 #include "Raven_UserOptions.h"
 #include "Raven_WeaponSystem.h"
+#include "armory/Raven_Weapon.h"
 #include "config/Raven_Config.h"
 #include "Graphics/GraphicsContext.h"
 #include "misc/Stream_Utility_Functions.h"
@@ -529,6 +530,11 @@ namespace Raven
         if (RavenUserOpt.m_bShowScore)
         {
             gfx.TextAtPos(Pos().x - 40, Pos().y + 10, "Scr:" + ttos(Score()));
+        }
+
+        if (RavenUserOpt.m_bShowCurrentWeapon)
+        {
+            gfx.TextAtPos(Pos().x - 40, Pos().y + 25, GetNameOfType(m_pWeaponSys->GetCurrentWeapon()->GetType()));
         }
     }
 

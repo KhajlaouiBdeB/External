@@ -81,6 +81,8 @@ namespace Raven
                             &RavenUserOpt.m_bOnlyShowBotsInTargetsFOV);
             y += 20;
             gfx.GuiCheckBox({x, y, 16, 16}, "Show scores", &RavenUserOpt.m_bShowScore);
+            y += 20;
+            gfx.GuiCheckBox({x, y, 16, 16}, "Show current weapon", &RavenUserOpt.m_bShowCurrentWeapon);
             y += 24;
 
             gfx.GuiLabel({x, y, w, 18}, "Maps (double-click to load)");
