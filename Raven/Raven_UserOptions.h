@@ -35,8 +35,6 @@ namespace Raven
 
         bool m_bShowFOVOfSelectedBot;
 
-        bool m_bOnlyShowBotsInTargetsFOV;
-
         bool m_bShowWeaponAppraisals;
 
         bool m_bSmoothPathsQuick;
@@ -49,6 +47,8 @@ namespace Raven
         bool m_bShowScore;
 
         bool m_bShowCurrentWeapon;
+
+        bool m_bShowBotDestinations;
     };
 
 } // namespace Raven

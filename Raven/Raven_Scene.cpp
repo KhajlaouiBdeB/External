@@ -12,6 +12,7 @@
 #include "config/Raven_Config.h"
 #include "game/EntityManager.h"
 #include "messaging/MessageDispatcher.h"
+#include "misc/Stream_Utility_Functions.h"
 #include "Graphics/GraphicsContext.h"
 
 #include "raylib.h"
@@ -640,31 +641,13 @@ namespace Raven
         // render the map
         m_pMap->Render();
 
-        // render all the bots unless the user has selected the option to only
-        // render those bots that are in the fov of the selected bot
-        if (m_pSelectedBot && RavenUserOpt.m_bOnlyShowBotsInTargetsFOV)
+        // render all the entities
+        std::list<Raven_Bot*>::const_iterator curBot = m_Bots.begin();
+        for (curBot; curBot != m_Bots.end(); ++curBot)
         {
-            std::vector<Raven_Bot*>
-                VisibleBots = GetAllBotsInFOV(m_pSelectedBot);
-
-            std::vector<Raven_Bot*>::const_iterator it = VisibleBots.begin();
-            for (it; it != VisibleBots.end(); ++it)
-                (*it)->Render();
-
-            if (m_pSelectedBot)
-                m_pSelectedBot->Render();
-        }
-
-        else
-        {
-            // render all the entities
-            std::list<Raven_Bot*>::const_iterator curBot = m_Bots.begin();
-            for (curBot; curBot != m_Bots.end(); ++curBot)
+            if ((*curBot)->isAlive())
             {
-                if ((*curBot)->isAlive())
-                {
-                    (*curBot)->Render();
-                }
+                (*curBot)->Render();
             }
         }
 
@@ -727,14 +710,15 @@ namespace Raven
                 gfx.PolyLine(arcTips);
             }
 
-            // render a square around the bot's target
+            // render a square + label around the bot's target
             if (RavenUserOpt.m_bShowTargetOfSelectedBot && m_pSelectedBot->GetTargetBot())
             {
+                Raven_Bot* target = m_pSelectedBot->GetTargetBot();
 
                 gfx.ThickRedPen();
 
-                Vector2D p = m_pSelectedBot->GetTargetBot()->Pos();
-                double b = m_pSelectedBot->GetTargetBot()->BRadius();
+                Vector2D p = target->Pos();
+                double b = target->BRadius();
 
                 gfx.Line(p.x - b, p.y - b, p.x + b, p.y - b);
                 gfx.Line(p.x + b, p.y - b, p.x + b, p.y + b);
@@ -745,6 +729,15 @@ namespace Raven
             if (RavenUserOpt.m_bShowWeaponAppraisals)
             {
                 m_pSelectedBot->GetWeaponSys()->RenderDesirabilities();
+            }
+
+            if (RavenUserOpt.m_bShowBotDestinations)
+            {
+                Vector2D destination = m_pSelectedBot->GetPathPlanner()->GetDestination();
+
+                gfx.BluePen();
+                gfx.BlueBrush();
+                gfx.Circle(destination, 4);
             }
 
             if (IsKeyDown('Q') && m_pSelectedBot->isPossessed())
