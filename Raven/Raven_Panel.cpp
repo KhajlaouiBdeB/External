@@ -94,8 +94,11 @@ namespace Raven
                 mapListText += mapFiles[i];
             }
 
+            const double remainingHeight = panelRect.h - y - 10;
+            const double listHeight = remainingHeight > 40 ? remainingHeight : 40;
+
             int previousActive = _mapListActive;
-            gfx.GuiListView({x, y, w, 130}, mapListText.c_str(), &_mapListScroll, &_mapListActive);
+            gfx.GuiListView({x, y, w, listHeight}, mapListText.c_str(), &_mapListScroll, &_mapListActive);
 
             if (_mapListActive >= 0 && _mapListActive < (int)mapFiles.size() && _mapListActive != previousActive)
                 _pendingRequest.loadMapIndex = _mapListActive;
