@@ -191,6 +191,11 @@ namespace Raven
         {
             return m_bPossessed;
         }
+
+        void SetAutoFire(bool on)
+        {
+            m_autoFire = on;
+        }
         bool isDead() const
         {
             return m_Status == dead;
@@ -287,15 +292,12 @@ namespace Raven
             return m_pSensoryMem;
         }
 
-        // The bot doesn't build its own behaviour tree. Whoever spawns the bot (Raven_Scene::
-        // AddBots) is expected to call this right after construction, e.g.
-        // bot->SetBrain(BehaviourTree::BuildRavenBotTree(bot));
-        // Takes ownership: deletes any previously assigned brain first.
-        void SetBrain(BehaviourTree::BehaviourTree* brain);
         BehaviourTree::BehaviourTree* GetBrain() const
         {
             return m_pBrain;
         }
+
+        void SetBrain(BehaviourTree::BehaviourTree* brain);
     };
 } // namespace Raven
 
